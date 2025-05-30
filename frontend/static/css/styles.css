@@ -1,0 +1,19 @@
+body {
+    background-color: #f8f9fa;
+    color: #212529;
+}
+.navbar {
+    margin-bottom: 20px;
+}
+/* style.css içine */
+.navbar img {
+    object-fit: cover;
+}
+.navbar img.rounded-circle {
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.navbar img.rounded-circle:hover {
+    transform: scale(1.1);
+}

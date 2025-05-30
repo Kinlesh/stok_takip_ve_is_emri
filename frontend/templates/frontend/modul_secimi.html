@@ -1,0 +1,15 @@
+{% extends "frontend/base.html" %}
+{% block title %}Modül Seçimi{% endblock %}
+{% block content %}
+<div class="container text-center mt-5">
+    <h2>Modül Seçiniz</h2>
+    <div class="row justify-content-center mt-4">
+        <div class="col-md-4">
+            <a href="{% url 'urun_listesi' %}" class="btn btn-primary btn-lg w-100">📦 Stok Takip</a>
+        </div>
+        <div class="col-md-4">
+            <a href="{% url 'is_emri_listesi' %}" class="btn btn-success btn-lg w-100">🛠️ İş Emri</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

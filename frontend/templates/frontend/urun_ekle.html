@@ -1,0 +1,45 @@
+{% extends "frontend/base.html" %}
+{% load static %}
+{% block title %}Yeni Ürün Ekle{% endblock %}
+
+{% block content %}
+<h2 class="text-primary">Yeni Ürün Ekle</h2>
+
+<form id="urunEkleForm">
+    <div class="mb-3">
+        <label for="kategori" class="form-label">Kategori</label>
+        <select id="kategori" class="form-control" required></select>
+    </div>
+    <div class="mb-3">
+        <label for="adi" class="form-label">Ürün Adı</label>
+        <input type="text" id="adi" class="form-control" required>
+    </div>
+
+
+    <div class="mb-3">
+        <label for="aciklama1" class="form-label">Marka</label>
+        <input type="text" id="aciklama1" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label for="aciklama2" class="form-label">Model</label>
+        <input type="text" id="aciklama2" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label for="aciklama3" class="form-label">Açıklama </label>
+        <input type="text" id="aciklama3" class="form-control">
+    </div>
+    <div class="mb-3">
+    <label for="ybs_malzeme_ismi" class="form-label">YBS Malzeme İsmi</label>
+    <input type="text" id="ybs_malzeme_ismi" class="form-control">
+    </div>
+    <div class="mb-3">
+    <label for="ybs_malzeme_kodu" class="form-label">YBS Malzeme Kodu</label>
+    <input type="text" id="ybs_malzeme_kodu" class="form-control">
+    </div>
+    <button type="submit" class="btn btn-primary">Ürün Ekle</button>
+</form>
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'js/urun_ekle.js' %}"></script>
+{% endblock %}

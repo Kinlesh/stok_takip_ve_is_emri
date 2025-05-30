@@ -1,0 +1,50 @@
+{% extends "frontend/base.html" %}
+{% load static %}
+{% block title %}Personel Ekle{% endblock %}
+
+{% block content %}
+<h2 class="text-primary">Personel Ekle</h2>
+
+<!-- Personel Ekleme Formu -->
+<div class="mb-3">
+    <label for="personelAdi" class="form-label">Personel Adı</label>
+    <input type="text" id="personelAdi" class="form-control" placeholder="Personel adı girin">
+    <button class="btn btn-primary mt-2" onclick="personelEkle()">Personel Ekle</button>
+</div>
+
+<!-- Personel Listesi -->
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Personel Adı</th>
+            <th>İşlemler</th>
+        </tr>
+    </thead>
+    <tbody id="personeller"></tbody>
+</table>
+
+<!-- Düzenleme Modalı -->
+<div class="modal fade" id="duzenlePersonelModal" tabindex="-1" aria-labelledby="duzenlePersonelModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Personel Düzenle</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Kapat"></button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="duzenlePersonelId">
+                <label for="duzenlePersonelAdi" class="form-label">Personel Adı</label>
+                <input type="text" id="duzenlePersonelAdi" class="form-control">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">İptal</button>
+                <button type="button" class="btn btn-success" onclick="personelGuncelle()">Kaydet</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'js/personel_ekle.js' %}"></script>
+{% endblock %}

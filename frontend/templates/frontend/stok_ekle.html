@@ -1,0 +1,40 @@
+{% extends "frontend/base.html" %}
+{% load static %}
+{% block title %}Stok Hareketi Ekle{% endblock %}
+
+{% block content %}
+<h2 class="text-primary">Yeni Stok Hareketi Ekle</h2>
+
+<form id="stokEkleForm">
+    <label for="stokUrun" class="form-label">Ürün</label>
+    <select id="stokUrun" class="form-control"></select>
+
+    <label for="stokIslem" class="form-label">İşlem Türü</label>
+    <select id="stokIslem" class="form-control">
+        <option value="Giriş">Giriş</option>
+        <option value="Çıkış">Çıkış</option>
+    </select>
+
+    <label for="stokAdet" class="form-label">Adet</label>
+    <input type="number" id="stokAdet" class="form-control">
+
+    <label for="stokAciklama" class="form-label">Açıklama</label>
+    <input type="text" id="stokAciklama" class="form-control">
+
+    <label for="stokLokasyon" class="form-label">Lokasyon</label>
+    <select id="stokLokasyon" class="form-control"></select>
+
+    <label for="stokPersonel" class="form-label">Personel</label>
+    <select id="stokPersonel" class="form-control"></select>
+
+
+    <label for="stokPlaka" class="form-label">Plaka</label>
+    <input type="text" id="stokPlaka" class="form-control">
+
+    <button type="submit" class="btn btn-primary mt-2">Kaydet</button>
+</form>
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'js/stok_ekle.js' %}"></script>
+{% endblock %}

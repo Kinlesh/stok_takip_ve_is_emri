@@ -1,0 +1,82 @@
+{% extends "frontend/base.html" %}
+{% block title %}İş Emri Ekle{% endblock %}
+{% block content %}
+<div class="container">
+    <h2>Yeni İş Emri Oluştur</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <div class="mb-3">
+            <label>Lokasyon</label>
+            <select name="lokasyon" class="form-control" required>
+                {% for l in lokasyonlar %}
+                    <option value="{{ l.id }}">{{ l }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label>İlçe</label>
+            <input type="text" name="ilce" class="form-control" required>
+        </div>
+
+        <div class="mb-3">
+            <label>Yapılacak İş</label>
+            <select name="yapilacak_isler" class="form-select select2" multiple required>
+                {% for i in yapilacak_isler %}
+                    <option value="{{ i.id }}">{{ i }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label>İşin Türü</label>
+            <select name="is_turleri" class="form-select select2" multiple required>
+                {% for t in is_turleri %}
+                    <option value="{{ t.id }}">{{ t }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        {% for i in "1234" %}
+        <div class="mb-3">
+            <label>Personel {{ i }}{% if forloop.first %} (zorunlu){% endif %}</label>
+            <select name="personel{{ i }}" class="form-control" {% if forloop.first %}required{% endif %}>
+                <option value="">Seçiniz</option>
+                {% for p in personeller %}
+                    <option value="{{ p.id }}">{{ p }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        {% endfor %}
+
+        <div class="mb-3">
+            <label>Açıklama</label>
+            <textarea name="aciklama" class="form-control"></textarea>
+        </div>
+
+        <div class="mb-3">
+            <label>Sonuç</label>
+            <select name="sonuc" class="form-control" required>
+                <option value="olumlu">Olumlu</option>
+                <option value="olumsuz">Olumsuz</option>
+            </select>
+        </div>
+
+<div class="mb-3">
+    <label>Başlangıç Fotoğrafı</label>
+    <input type="file" name="baslangic_fotograf" class="form-control" onchange="previewImage(this, 'preview_baslangic')">
+    <img id="preview_baslangic" src="#" alt="Başlangıç önizleme" style="max-width: 200px; display: none;" class="mt-2">
+</div>
+
+<div class="mb-3">
+    <label>Bitiş Fotoğrafı</label>
+    <input type="file" name="bitis_fotograf" class="form-control" onchange="previewImage(this, 'preview_bitis')">
+    <img id="preview_bitis" src="#" alt="Bitiş önizleme" style="max-width: 200px; display: none;" class="mt-2">
+</div>
+
+
+        <button type="submit" class="btn btn-primary">Kaydet</button>
+    </form>
+</div>
+{% endblock %}

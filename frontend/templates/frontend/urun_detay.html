@@ -1,0 +1,45 @@
+{% extends "frontend/base.html" %}
+{% load static %}
+{% block title %}Ürün Detayı{% endblock %}
+
+{% block content %}
+<h2 class="text-primary">Ürün Detayı</h2>
+
+<div class="card">
+    <div class="card-body">
+        <p><strong>Kategori:</strong> <select id="urunKategori" class="form-control"></select></p>
+        <p><strong>Ürün Adı: </strong> <input type="text" id="urunAdiInput" class="form-control" ></p>
+        <p><strong>Stok Miktarı:</strong> <span id="urunStok"></span></p>
+        <h2 id="urunStok" class="text-success fw-bold"></h2>
+        <p><strong>Marka :</strong> <input type="text" id="aciklama1" class="form-control"></p>
+        <p><strong>Model :</strong> <input type="text" id="aciklama2" class="form-control"></p>
+        <p><strong>Açıklama :</strong> <input type="text" id="aciklama3" class="form-control"></p>
+        <p><strong>Minimum Stok:</strong> <input type="number" id="minimumStok" class="form-control"></p>
+        <p><strong>YBS Malzeme İsmi :</strong> <input type="text" id="ybs_malzeme_ismi" class="form-control"></p>
+        <p><strong>YBS Malzeme Kodu :</strong> <input type="text" id="ybs_malzeme_kodu" class="form-control"></p>
+        <button class="btn btn-success mt-2" onclick="urunGuncelle()">Güncelle</button>
+        <button class="btn btn-danger mt-2" onclick="urunSil()">Ürünü Sil</button>
+    </div>
+</div>
+
+<h3 class="mt-4">Stok Hareketleri</h3>
+<table class="table table-bordered mt-3">
+    <thead>
+        <tr>
+            <th>İşlem Türü</th>
+            <th>Adet</th>
+            <th>Açıklama</th>
+            <th>Plaka</th>
+            <th>Tarih</th>
+        </tr>
+    </thead>
+    <tbody id="stokHareketleri"></tbody>
+</table>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    const urunId = "{{ urun_id }}";
+</script>
+<script src="{% static 'js/urun_detay.js' %}"></script>
+{% endblock %}

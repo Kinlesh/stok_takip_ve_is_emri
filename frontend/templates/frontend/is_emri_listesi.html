@@ -1,0 +1,32 @@
+{% extends "frontend/base.html" %}
+{% block title %}İş Emirleri{% endblock %}
+{% block content %}
+<div class="container">
+    <h2 class="mb-4">İş Emirleri</h2>
+    <a href="{% url 'is_emri_ekle' %}" class="btn btn-success mb-3">➕ Yeni İş Emri</a>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Lokasyon</th>
+                <th>İlçe</th>
+                <th>Personel(1)</th>
+                <th>Sonuç</th>
+                <th>Başlangıç</th>
+                <th>Bitiş</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for is_emri in is_emirleri %}
+            <tr>
+                <td>{{ is_emri.lokasyon }}</td>
+                <td>{{ is_emri.ilce }}</td>
+                <td>{{ is_emri.personel1 }}</td>
+                <td>{{ is_emri.get_sonuc_display }}</td>
+                <td>{% if is_emri.baslangic_fotograf %}<a href="{{ is_emri.baslangic_fotograf.url }}" target="_blank">Görüntüle</a>{% endif %}</td>
+                <td>{% if is_emri.bitis_fotograf %}<a href="{{ is_emri.bitis_fotograf.url }}" target="_blank">Görüntüle</a>{% endif %}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

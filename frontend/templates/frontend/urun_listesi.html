@@ -1,0 +1,52 @@
+{% extends "frontend/base.html" %}
+{% load static %}
+{% block title %}Ürün Listesi{% endblock %}
+
+{% block content %}
+<h2 class="text-primary">Ürün Listesi</h2>
+
+<!-- 🔍 Arama ve Export -->
+<div class="row mb-3">
+    <div class="col-md-4">
+        <input type="text" id="urunAra" class="form-control" placeholder="Ürün adına göre ara...">
+    </div>
+    <div class="col-md-4">
+        <button class="btn btn-success" onclick="exportUrunlerExcel()">📥 Excel'e Aktar</button>
+    </div>
+</div>
+
+<!-- 🔽 Sıralama -->
+<div class="row mb-3">
+    <div class="col-md-4">
+        <select id="siralaSelect" class="form-control">
+            <option value="">Sıralama Seçin</option>
+            <option value="adi">A-Z (Ürün Adı)</option>
+            <option value="-adi">Z-A (Ürün Adı)</option>
+            <option value="stok_miktari">Stok (Artan)</option>
+            <option value="-stok_miktari">Stok (Azalan)</option>
+        </select>
+    </div>
+</div>
+
+<!-- 📦 Ürün Tablosu -->
+<table class="table table-bordered mt-3">
+    <thead>
+        <tr>
+            <th>Ürün Adı</th>
+            <th>Kategori</th>
+            <th>Adet</th>
+            <th>Marka</th>
+            <th>Model</th>
+            <th>Açıklama </th>
+            <th>YBS Malzeme İsmi</th>
+            <th>YBS Malzeme Kodu</th>
+            <th>İşlemler</th>
+        </tr>
+    </thead>
+    <tbody id="urunler"></tbody>
+</table>
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'js/urun_listesi.js' %}"></script>
+{% endblock %}

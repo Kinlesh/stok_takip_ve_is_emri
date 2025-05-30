@@ -1,0 +1,15 @@
+{% extends "frontend/base.html" %}
+{% block title %}İş Türü Ekle{% endblock %}
+{% block content %}
+<div class="container">
+    <h3>Yeni İş Türü Ekle</h3>
+    <form method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label>Tür Adı</label>
+            <input type="text" name="isim" class="form-control" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Ekle</button>
+    </form>
+</div>
+{% endblock %}

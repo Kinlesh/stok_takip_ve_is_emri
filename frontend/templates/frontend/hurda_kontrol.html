@@ -1,0 +1,45 @@
+{% extends "frontend/base.html" %}
+{% load static %}
+{% block title %}Hurda Kontrol{% endblock %}
+
+{% block content %}
+<h2 class="text-primary">Hurda Kontrol</h2>
+
+<form id="hurdaForm">
+    <label for="hurdaUrun" class="form-label">Ürün</label>
+    <select id="hurdaUrun" class="form-control"></select>
+
+    <label for="hurdaAdet" class="form-label">Adet</label>
+    <input type="number" id="hurdaAdet" class="form-control">
+
+    <label for="hurdaAciklama" class="form-label">Açıklama</label>
+    <input type="text" id="hurdaAciklama" class="form-control">
+
+    <label for="hurdaLokasyon" class="form-label">Lokasyon</label>
+    <select id="hurdaLokasyon" class="form-control"></select>
+
+    <button type="submit" class="btn btn-danger mt-2">Hurdaya Gönder</button>
+</form>
+
+<!-- 🔻 Hurda geçmişi tablosu -->
+<h4 class="mt-5">📦 Hurdaya Gönderilenler</h4>
+<div class="d-flex justify-content-end mb-3">
+    <button id="hurdaExportBtn" class="btn btn-success">📥 Excel'e Aktar</button>
+</div>
+<table class="table table-bordered mt-2">
+    <thead>
+        <tr>
+            <th>Ürün</th>
+            <th>Adet</th>
+            <th>Açıklama</th>
+            <th>Lokasyon</th>
+            <th>Tarih</th>
+        </tr>
+    </thead>
+    <tbody id="hurdaListe"></tbody>
+</table>
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'js/hurda_kontrol.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends "frontend/base.html" %}
+{% load static %}
+{% block title %}Stok Hareketleri{% endblock %}
+
+{% block content %}
+<h2 class="text-primary">Stok Hareketleri</h2>
+<!-- 🔍 Arama ve Sıralama -->
+<div class="row mb-3">
+    <div class="col-md-4">
+        <input type="text" id="stokAra" class="form-control" placeholder="Ürün adına göre ara...">
+    </div>
+    <div class="col-md-4">
+        <select id="stokSirala" class="form-control">
+            <option value="">Sıralama Seçin</option>
+            <option value="-tarih">Tarih (Yeni → Eski)</option>
+            <option value="tarih">Tarih (Eski → Yeni)</option>
+            <option value="-adet">Adet (Azalan)</option>
+            <option value="adet">Adet (Artan)</option>
+        </select>
+    </div>
+    <div class="col-md-4">
+        <button class="btn btn-success" onclick="exportExcel()">📥 Excel'e Aktar</button>
+    </div>
+</div>
+
+<table class="table table-bordered mt-3">
+    <thead>
+        <tr>
+            <th>Ürün Adı</th>
+            <th>İşlem Türü</th>
+            <th>Adet</th>
+            <th>Açıklama</th>
+            <th>Plaka</th>
+            <th>Lokasyon</th>
+            <th>Personel</th>
+            <th>Tarih</th>
+        </tr>
+    </thead>
+    <tbody id="stokHareketleri"></tbody>
+</table>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'js/stok_hareketleri.js' %}"></script>
+{% endblock %}

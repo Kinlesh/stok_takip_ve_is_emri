@@ -1,0 +1,50 @@
+{% extends "frontend/base.html" %}
+{% load static %}
+{% block title %}Lokasyon Ekle{% endblock %}
+
+{% block content %}
+<h2 class="text-primary">Lokasyon Ekle</h2>
+
+<!-- Lokasyon Ekleme Formu -->
+<div class="mb-3">
+    <label for="lokasyonAdi" class="form-label">Lokasyon Adı</label>
+    <input type="text" id="lokasyonAdi" class="form-control" placeholder="Lokasyon adı girin">
+    <button class="btn btn-primary mt-2" onclick="lokasyonEkle()">Lokasyon Ekle</button>
+</div>
+
+<!-- Lokasyon Listesi -->
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Lokasyon Adı</th>
+            <th>İşlemler</th>
+        </tr>
+    </thead>
+    <tbody id="lokasyonlar"></tbody>
+</table>
+
+<!-- Düzenleme Modalı -->
+<div class="modal fade" id="duzenleLokasyonModal" tabindex="-1" aria-labelledby="duzenleLokasyonModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Lokasyon Düzenle</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Kapat"></button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="duzenleLokasyonId">
+                <label for="duzenleLokasyonAdi" class="form-label">Lokasyon Adı</label>
+                <input type="text" id="duzenleLokasyonAdi" class="form-control">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">İptal</button>
+                <button type="button" class="btn btn-success" onclick="lokasyonGuncelle()">Kaydet</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'js/lokasyon_ekle.js' %}"></script>
+{% endblock %}

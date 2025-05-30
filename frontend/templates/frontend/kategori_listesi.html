@@ -1,0 +1,48 @@
+{% extends "frontend/base.html" %}
+{% load static %}
+{% block title %}Kategori Listesi{% endblock %}
+
+{% block content %}
+<h2 class="text-primary">Kategori Listesi</h2>
+
+<div class="mb-3">
+    <label for="kategoriAdi" class="form-label">Kategori Adı</label>
+    <input type="text" id="kategoriAdi" class="form-control" placeholder="Kategori adı girin">
+    <button class="btn btn-primary mt-2" onclick="kategoriEkle()">Kategori Ekle</button>
+</div>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Kategori Adı</th>
+            <th>İşlemler</th>
+        </tr>
+    </thead>
+    <tbody id="kategoriler"></tbody>
+</table>
+
+<!-- Modal -->
+<div class="modal fade" id="duzenleModal" tabindex="-1" aria-labelledby="duzenleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="duzenleModalLabel">Kategori Düzenle</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Kapat"></button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="duzenleKategoriId">
+                <label for="duzenleKategoriAdi" class="form-label">Kategori Adı</label>
+                <input type="text" id="duzenleKategoriAdi" class="form-control">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">İptal</button>
+                <button type="button" class="btn btn-success" onclick="kategoriGuncelle()">Kaydet</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'js/kategori.js' %}"></script>
+{% endblock %}
