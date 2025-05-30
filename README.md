@@ -1,0 +1,1 @@
+# stok_takip_ve_is_emri
